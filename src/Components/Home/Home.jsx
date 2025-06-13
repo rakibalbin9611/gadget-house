@@ -1,5 +1,5 @@
 // src/Components/Home/Home.jsx
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Banner from "../Banner/Banner";
 import CategorySideBar from "../CategorySideBar/CategorySideBar";
@@ -7,6 +7,13 @@ import ProductCard from "../ProductCard/ProductCard";
 
 const Home = () => {
   const gadgets = useLoaderData(); // ← comes from your route loader
+  const [category, setCategory] = useState("All Product");
+
+  // Filter list each render
+  const visible =
+    category === "All Product"
+      ? gadgets
+      : gadgets.filter((g) => g.category === category);
 
   return (
     <>
@@ -23,13 +30,13 @@ const Home = () => {
         <div className="flex flex-col md:flex-row gap-8">
           {/* SIDEBAR — stacks on top for mobile */}
           <aside className="w-full md:w-1/4">
-            <CategorySideBar />
+            <CategorySideBar selected={category} onSelect={setCategory} />
           </aside>
 
           {/* PRODUCT GRID */}
           <section className="w-full md:w-3/4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {gadgets.map((p) => (
+              {visible.map((p) => (
                 <ProductCard key={p.product_id} product={p} />
               ))}
             </div>
