@@ -1,4 +1,3 @@
-// src/Components/Home/Home.jsx
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Banner from "../Banner/Banner";
@@ -6,7 +5,8 @@ import CategorySideBar from "../CategorySideBar/CategorySideBar";
 import ProductCard from "../ProductCard/ProductCard";
 
 const Home = () => {
-  const gadgets = useLoaderData(); // ← comes from your route loader
+  const rawData = useLoaderData();
+  const gadgets = Array.isArray(rawData) ? rawData : [];
   const [category, setCategory] = useState("All Product");
 
   // Filter list each render

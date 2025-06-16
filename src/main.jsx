@@ -8,6 +8,7 @@ import Root from "./Components/Root/Root.jsx";
 import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
 import Home from "./Components/Home/Home.jsx";
 import ProductDetail from "./Components/ProductDetail/ProductDetail.jsx";
+import DashBoard from "./Components/Dashboard/DashBoard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,22 +19,26 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("gadgets.json"),
+        loader: () => fetch("/gadgets.json"),
+      },
+      {
+        path: "/dashboard",
+        element: <DashBoard></DashBoard>,
+        loader: () => fetch("/gadgets.json"),
       },
       {
         path: "/product/:productId",
         element: <ProductDetail></ProductDetail>,
+        // /product/:productId   route
         loader: async ({ params }) => {
           const res = await fetch("/gadgets.json");
-          const data = await res.json();
+          const gadgets = await res.json(); // full array
 
-          const product = data.find((p) =>
-            String(p.product_id === params.productId)
+          // compare after string‑ifying the product_id
+          return (
+            gadgets.find((g) => String(g.product_id) === params.productId) ||
+            null
           );
-          if (!product) {
-            throw new Response("Not Found", { status: 404 });
-          }
-          return product;
         },
       },
     ],

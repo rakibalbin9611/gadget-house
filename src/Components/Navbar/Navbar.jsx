@@ -1,5 +1,4 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 const Navbar = () => {
@@ -17,7 +16,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar px-10 bg-[#9538E2] text-white">
+    <div className="navbar px-10 bg-[#9538E2] text-white ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -43,12 +42,14 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a
-          href="#"
-          className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-indigo-600 hover:to-purple-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-[0_4px_20px_rgba(139,92,246,0.6)] hover:shadow-[0_6px_30px_rgba(99,102,241,0.7)] transition duration-300 ease-in-out"
-        >
-          Gadget House
-        </a>
+        <Link to={"/"}>
+          <button
+            href="#"
+            className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-indigo-600 hover:to-purple-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-[0_4px_20px_rgba(139,92,246,0.6)] hover:shadow-[0_6px_30px_rgba(99,102,241,0.7)] transition duration-300 ease-in-out"
+          >
+            Gadget House
+          </button>
+        </Link>
       </div>
       <div className="navbar-center hidden font-medium lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>

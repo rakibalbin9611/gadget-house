@@ -1,11 +1,13 @@
-// src/Components/ProductDetail/ProductDetail.jsx
-import React from "react";
 import { useLoaderData, Link } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaShoppingCart, FaHeart } from "react-icons/fa";
+import { addToStoredCartList } from "../Utility/AddToDB";
 
 const ProductDetail = () => {
   const p = useLoaderData();
-
+  console.log(p);
+  const handleAddToCart = (id) => {
+    addToStoredCartList(id);
+  };
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       {/* Back link */}
@@ -50,6 +52,23 @@ const ProductDetail = () => {
           </p>
 
           <p>Rating: ⭐ {p.rating}</p>
+
+          {/* Buttons */}
+          <div className="flex gap-4 pt-4">
+            <button
+              onClick={() => handleAddToCart(p.product_id)}
+              className="p-3 rounded-full bg-purple-600 text-white hover:bg-purple-700 transition"
+              title="Add to Cart"
+            >
+              <FaShoppingCart size={20} />
+            </button>
+            <button
+              className="p-3 rounded-full bg-gray-200 text-red-500 hover:bg-red-100 transition"
+              title="Add to Wishlist"
+            >
+              <FaHeart size={20} />
+            </button>
+          </div>
         </div>
       </div>
     </div>
