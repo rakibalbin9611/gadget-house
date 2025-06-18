@@ -1,11 +1,11 @@
 import { FaDollarSign, FaStar, FaTimes } from "react-icons/fa";
 
-const ProductCardShow = ({ cart, handleRemoveCartItem }) => {
+const ShowWishList = ({ cart, handleRemoveWishItem }) => {
   const { product_id, product_title, category, product_image, rating, price } =
     cart;
 
   const handleRemove = () => {
-    handleRemoveCartItem(product_id);
+    handleRemoveWishItem(product_id);
   };
 
   return (
@@ -41,7 +41,7 @@ const ProductCardShow = ({ cart, handleRemoveCartItem }) => {
           <button
             onClick={handleRemove}
             className="text-red-600 text-xl hover:text-red-800 transition"
-            title="Remove from cart"
+            title="Remove from wishlist"
           >
             <FaTimes />
           </button>
@@ -51,4 +51,4 @@ const ProductCardShow = ({ cart, handleRemoveCartItem }) => {
   );
 };
 
-export default ProductCardShow;
+export default ShowWishList;

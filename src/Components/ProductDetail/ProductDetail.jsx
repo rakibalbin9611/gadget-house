@@ -1,12 +1,16 @@
 import { useLoaderData, Link } from "react-router-dom";
 import { FaArrowLeft, FaShoppingCart, FaHeart } from "react-icons/fa";
-import { addToStoredCartList } from "../Utility/AddToDB";
+import { addToStoredCartList, addToStoredWishList } from "../Utility/AddToDB";
 
 const ProductDetail = () => {
   const p = useLoaderData();
-  console.log(p);
+  // console.log(p);
   const handleAddToCart = (id) => {
     addToStoredCartList(id);
+  };
+
+  const handleAddToWish = (id) => {
+    addToStoredWishList(id);
   };
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
@@ -63,6 +67,7 @@ const ProductDetail = () => {
               <FaShoppingCart size={20} />
             </button>
             <button
+              onClick={() => handleAddToWish(p.product_id)}
               className="p-3 rounded-full bg-gray-200 text-red-500 hover:bg-red-100 transition"
               title="Add to Wishlist"
             >
