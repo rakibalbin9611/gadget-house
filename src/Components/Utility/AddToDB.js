@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const CART_KEY = "cart-list";
 
 /* ------- read: always return an array of strings ------- */
@@ -36,10 +38,11 @@ const addToStoredCartList = (id) => {
 
   const idStr = String(id); // force string
   if (storedList.includes(idStr)) {
-    console.log(idStr, "already exists");
+    toast("Already exists");
   } else {
     storedList.push(idStr);
     localStorage.setItem(CART_KEY, JSON.stringify(storedList));
+    toast("Added to Cart List");
   }
 };
 
@@ -47,10 +50,11 @@ const addToStoredWishList = (id) => {
   const storedList = getStoredWishlist();
   const idStr = String(id);
   if (storedList.includes(idStr)) {
-    console.log(idStr, "Already exits in wish list.");
+    toast("Already exits in wish list.");
   } else {
     storedList.push(idStr);
     localStorage.setItem(WISH_KEY, JSON.stringify(storedList));
+    toast("Added to Wish List");
   }
 };
 
@@ -69,6 +73,8 @@ const removeCartItems = (id) => {
   localStorage.setItem(CART_KEY, JSON.stringify(remaining));
 };
 
+const clearCartList = () => localStorage.removeItem("cart-list");
+
 export {
   addToStoredCartList,
   getStoredCartList,
@@ -76,4 +82,5 @@ export {
   getStoredWishlist,
   removeWishItems,
   removeCartItems,
+  clearCartList,
 };

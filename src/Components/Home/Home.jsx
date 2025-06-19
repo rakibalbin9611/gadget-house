@@ -23,7 +23,7 @@ const Home = () => {
       {/* ---------- MAIN CONTENT ---------- */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 md:pt-56 lg:pt-72 pb-16">
         {/* Section title */}
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl text-black font-bold text-center mb-10">
           Explore Cutting‑Edge Gadgets
         </h2>
 

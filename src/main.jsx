@@ -9,6 +9,7 @@ import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
 import Home from "./Components/Home/Home.jsx";
 import ProductDetail from "./Components/ProductDetail/ProductDetail.jsx";
 import DashBoard from "./Components/Dashboard/DashBoard.jsx";
+import { Bounce, ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {
@@ -48,5 +49,18 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
+    <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick={false}
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      transition={Bounce}
+    />
   </StrictMode>
 );

@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
-const Navbar = () => {
+
+const Navbar = ({ isDashboard }) => {
+  const navBg = isDashboard ? "bg-white" : "bg-purple-600";
+  const navText = isDashboard ? "text-purple-600" : "text-white";
   const links = (
     <>
       <li>
@@ -16,7 +19,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar px-10 bg-[#9538E2] text-white ">
+    <div className={`navbar  px-10 bg-[#9538E2]  ${navBg} ${navText}`}>
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
