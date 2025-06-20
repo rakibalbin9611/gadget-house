@@ -10,6 +10,7 @@ import Home from "./Components/Home/Home.jsx";
 import ProductDetail from "./Components/ProductDetail/ProductDetail.jsx";
 import DashBoard from "./Components/Dashboard/DashBoard.jsx";
 import { Bounce, ToastContainer } from "react-toastify";
+import Statistics from "./Components/Statistics/Statistics.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <DashBoard></DashBoard>,
+        loader: () => fetch("/gadgets.json"),
+      },
+      {
+        path: "/statistics",
+        element: <Statistics></Statistics>,
         loader: () => fetch("/gadgets.json"),
       },
       {
