@@ -9,7 +9,7 @@ const Root = () => {
   const isDashboard = location.pathname === "/dashboard";
   return (
     <div className={isDashboard ? "bg-gray-100 min-h-screen" : "bg-white"}>
-      <section className="mx-8">
+      <section className="lg:mx-8">
         <Navbar isDashboard={isDashboard}></Navbar>
         <Outlet></Outlet>
       </section>

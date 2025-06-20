@@ -31,7 +31,7 @@ const Navbar = ({ isDashboard }) => {
   );
 
   return (
-    <nav className={`navbar px-4 sm:px-6 lg:px-8 ${navBg} ${navText}`}>
+    <nav className={`navbar  lg:px-8 ${navBg} ${navText}`}>
       {/* ------------ LEFT ------------ */}
       <div className="navbar-start">
         {/* mobile burger */}
