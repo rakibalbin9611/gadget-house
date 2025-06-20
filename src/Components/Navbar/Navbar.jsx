@@ -1,71 +1,101 @@
+// src/Components/Navbar/Navbar.jsx
 import { Link, NavLink } from "react-router-dom";
-import { FaCartArrowDown } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
+import { FaCartArrowDown, FaHeart } from "react-icons/fa";
 
 const Navbar = ({ isDashboard }) => {
+  /* dynamic bg & text */
   const navBg = isDashboard ? "bg-white" : "bg-purple-600";
   const navText = isDashboard ? "text-purple-600" : "text-white";
+
+  /* helper to give same color to links */
+  const linkClass = "px-3 py-1 hover:underline " + navText;
+
   const links = (
     <>
       <li>
-        <NavLink to={"/"}>Home</NavLink>
+        <NavLink to="/" className={linkClass}>
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/statistics"}>Statistics</NavLink>
+        <NavLink to="/statistics" className={linkClass}>
+          Statistics
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/dashboard"}>Dashboard</NavLink>
+        <NavLink to="/dashboard" className={linkClass}>
+          Dashboard
+        </NavLink>
       </li>
     </>
   );
+
   return (
-    <div className={`navbar  px-10 bg-[#9538E2]  ${navBg} ${navText}`}>
+    <nav className={`navbar px-4 sm:px-6 lg:px-8 ${navBg} ${navText}`}>
+      {/* ------------ LEFT ------------ */}
       <div className="navbar-start">
+        {/* mobile burger */}
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
-              fill="none"
               viewBox="0 0 24 24"
+              fill="none"
               stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
           </label>
+
+          {/* mobile dropdown */}
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  font-medium rounded-box w-52"
+            className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 ${navBg} ${navText}`}
           >
             {links}
           </ul>
         </div>
-        <Link to={"/"}>
-          <button
-            href="#"
-            className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-indigo-600 hover:to-purple-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-[0_4px_20px_rgba(139,92,246,0.6)] hover:shadow-[0_6px_30px_rgba(99,102,241,0.7)] transition duration-300 ease-in-out"
-          >
+
+        {/* brand button */}
+        <Link to="/">
+          <button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-indigo-600 hover:to-purple-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-[0_4px_20px_rgba(139,92,246,0.6)] hover:shadow-[0_6px_30px_rgba(99,102,241,0.7)] transition">
             Gadget House
           </button>
         </Link>
       </div>
-      <div className="navbar-center hidden font-medium lg:flex">
+
+      {/* ------------ CENTER (desktop links) ------------ */}
+      <div className="navbar-center hidden lg:flex font-medium">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
-        <a className="  bg-white rounded-full  w-10 h-10 flex items-center justify-center">
-          <FaCartArrowDown className="text-[#3A3A3A]" />
-        </a>
-        <a className="ml-4 bg-white rounded-full  w-10 h-10 flex items-center justify-center">
-          <FaHeart className="text-[#3A3A3A]" />
-        </a>
+
+      {/* ------------ RIGHT ------------ */}
+      <div className="navbar-end gap-4">
+        <Link
+          to="/dashboard"
+          className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow"
+        >
+          <FaCartArrowDown
+            className={isDashboard ? "text-purple-600" : "text-[#3A3A3A]"}
+          />
+        </Link>
+
+        <Link
+          to="/dashboard"
+          className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow"
+        >
+          <FaHeart
+            className={isDashboard ? "text-purple-600" : "text-[#3A3A3A]"}
+          />
+        </Link>
       </div>
-    </div>
+    </nav>
   );
 };
 
